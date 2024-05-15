@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Calculator = () => {
   const [displayValue, setDisplayValue] = useState('0');
@@ -8,7 +9,7 @@ const Calculator = () => {
 
 
   const putDot = () => {
-    if (currentValue = '0'|| '0.') {
+    if (currentValue = '0') {
       currentValue = '0.';
     } else 
       if (!currentValue.includes('.')) {
@@ -71,11 +72,11 @@ const Calculator = () => {
     >
       <Text style={styles.display}>{displayValue}</Text>
       <View style={styles.row}>
-        <TouchableOpacity onPress={handleClearPress} style={styles.operatorButton}>
+        <TouchableOpacity onPress={handleClearPress} style={styles.clearButton}>
           <Text style={styles.clearButtonText}>AC</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => putDot()} style={styles.operatorButton}>
-          <Text>.</Text>
+          <Text style={{color:'white'}}>.</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => (null)} style={styles.operatorButton}>
           <Text>nd</Text>
@@ -144,6 +145,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     padding: 5,
+    backgroundColor: 'black',
   },
   row: {
     flexDirection: 'row',
@@ -157,7 +159,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
+    borderRadius:100,
   },
   operatorButton: {
     flex: 1,
@@ -166,24 +169,36 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     padding: 20,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: 'green',
+    borderRadius:100,
   },
   operatorText: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: 'white',
   },
   display: {
     fontSize: 40,
     marginBottom: 20,
     textAlign: 'right',
+    color: 'white',
   },
   clearButton: {
-    marginTop: 20,
-    alignSelf: 'flex-end',
+    
+    backgroundColor: 'grey',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 20,
+    borderRadius:100,
+    
   },
   clearButtonText: {
     color: 'red',
     fontSize: 20,
+    
   },
 });
 
