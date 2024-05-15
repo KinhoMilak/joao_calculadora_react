@@ -77,7 +77,7 @@ const Calculator = () => {
         <TouchableOpacity onPress={() => putDot()} style={styles.operatorButton}>
           <Text>.</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleNumberPress(null)} style={styles.operatorButton}>
+        <TouchableOpacity onPress={() => (null)} style={styles.operatorButton}>
           <Text>nd</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => handleOperatorPress('+')} style={styles.operatorButton}>
