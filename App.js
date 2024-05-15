@@ -6,6 +6,18 @@ const Calculator = () => {
   const [prevValue, setPrevValue] = useState(null);
   const [operator, setOperator] = useState(null);
 
+
+  const putDot = () => {
+    if (currentValue = '0'|| '0.') {
+      currentValue = '0.';
+    } else 
+      if (!currentValue.includes('.')) {
+      
+      currentValue = currentValue + '.';
+    }else {currentValue = currentValue}
+    setDisplayValue(currentValue);
+  }
+
   const handleNumberPress = (num) => {
     if (displayValue === '0') {
       setDisplayValue(num.toString());
@@ -59,6 +71,20 @@ const Calculator = () => {
     >
       <Text style={styles.display}>{displayValue}</Text>
       <View style={styles.row}>
+        <TouchableOpacity onPress={handleClearPress} style={styles.operatorButton}>
+          <Text style={styles.clearButtonText}>AC</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => putDot()} style={styles.operatorButton}>
+          <Text>.</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleNumberPress(null)} style={styles.operatorButton}>
+          <Text>nd</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleOperatorPress('+')} style={styles.operatorButton}>
+          <Text style={styles.operatorText}>+</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.row}>
         <TouchableOpacity onPress={() => handleNumberPress(7)} style={styles.numberButton}>
           <Text>7</Text>
         </TouchableOpacity>
@@ -104,16 +130,11 @@ const Calculator = () => {
         <TouchableOpacity onPress={() => handleNumberPress(0)} style={[styles.numberButton, { flex: 2 }]}>
           <Text>0</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleEqualsPress} style={styles.operatorButton}>
+        <TouchableOpacity onPress={handleEqualsPress} style={[styles.operatorButton, { flex: 2 }]}>
           <Text style={styles.operatorText}>=</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleOperatorPress('+')} style={styles.operatorButton}>
-          <Text style={styles.operatorText}>+</Text>
-        </TouchableOpacity>
+
       </View>
-      <TouchableOpacity onPress={handleClearPress} style={styles.clearButton}>
-        <Text style={styles.clearButtonText}>Clear</Text>
-      </TouchableOpacity>
     </KeyboardAvoidingView>
   );
 };
@@ -122,12 +143,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-end',
-    padding: 20,
+    padding: 5,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 10,
+    marginBottom: 0,
   },
   numberButton: {
     flex: 1,
